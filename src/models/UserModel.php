@@ -26,4 +26,31 @@ class UserModel {
             die("". $e->getMessage());
         }
     }
+
+    public function reg_user($username,$password) {
+        try {
+            $stmt = $this->db->prepare("SELECT users.id from users WHERE username=:username");
+            $stmt->bindParam(":username", $username);
+            $stmt->execute();
+            if($stmt->fetch(PDO::FETCH_ASSOC)) {
+                return false;
+            }
+            $stmt = $this->db->prepare("INSERT INTO users (username,'password') VALUES (?,?)");
+            // $stmt->execute(array())
+            return true;
+        } catch(PDOException $e) {
+            die("". $e->getMessage());
+        }
+    }
+
+    public function login($username,$password) { 
+        $stmt = $this->db->prepare("SELECT users.password FROM users WHERE username = :username");
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if(password_verify($password, $row["password"])) {
+            return true;
+        } 
+        return false;
+    }
 }

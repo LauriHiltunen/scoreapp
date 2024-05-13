@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin:0;
+            /* font-family: ; */
+        }
+        #wrapper {
+            width:50svw;
+            margin:0 auto;
+
+        }
+        .score {
+            display: flex;
+        }
+        .start-game {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,25svw);
+            margin: 0 auto;
+            width: 50svw;
+        }
+        .form-submit > input[type="submit"] {
+
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <table>
+            <tbody>
+                <tr><td class="score"><p>Name</p><p class="rigth">2:13</p></td></tr>
+                <tr><td class="score"><p>Name</p><p class="rigth">2:13</p></td></tr>
+                <tr><td class="score"><p>Name</p><p class="rigth">2:13</p></td></tr>
+                <tr><td class="score"><p>Name</p><p class="rigth">2:13</p></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="controls">
+        <form class="start-game">
+            <select name="difficulty">
+                <option value="3">3 x 3</option>
+                <option value="4">4 x 4</option>
+                <option value="5">5 x 5</option>
+                <option value="6">6 x 6</option>
+            </select>
+            
+            <div class="form-submit"><input type="submit"></div>
+        </form>
+    </div>
+</body>
+</html>
