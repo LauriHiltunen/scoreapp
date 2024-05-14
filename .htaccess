@@ -1,2 +1,2 @@
 RewriteRule ^images/video/(.*)/(.*).jpg /image
-FallbackResource /taitaja/src/core/index.php
+FallbackResource /taitaja/index.php
