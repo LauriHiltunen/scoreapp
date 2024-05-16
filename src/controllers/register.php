@@ -2,6 +2,7 @@
 
 echo "<title>Tulokset</title>
 <link rel='stylesheet' href='/taitaja/resources/users.css'>
+
 </head>
 <body>
     
@@ -17,14 +18,21 @@ echo "<title>Tulokset</title>
                 </div>
                 <div class='input-wrapper'>
                     <label for='password'>Salasana</label>
-                    <input type='password' placeholder='Kirjoita salasana' class='login-text-input' name='password'>
+                    <input type='password' placeholder='Kirjoita salasana' class='login-text-input password-input' name='password'>
+                </div>
+                <div class='input-wrapper'>
+                    <label for='password'>Vahvista salasana</label>
+                    <input type='password' placeholder='Kirjoita salasana uudelleen' class='login-text-input password-input' name='password'>
+                </div>
+                <div class='input-wrapper'>
+                    <p id='passwordsWrongP' style='display:none;margin:0;font-size:0.8rem;'></p>
                 </div>
                 <div class='form-buttons'>
-                    <a href='/taitaja/register'>Haluan luoda käyttäjän</a>
-                    <input type='submit' value='Kirjaudu'>
+                    <a href='/taitaja/login'>Minulla on jo käyttäjä</a>
+                    <input type='submit' value='Luo käyttäjä'>
                 </div>
             </div> 
-            <div class='bottom-banner'></div>   
         </form>
     </div>
+    <script type='module' src='/taitaja/resources/register.js'></script>
 </body>";

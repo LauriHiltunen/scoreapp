@@ -6,8 +6,7 @@ include ("./autoloader.php");
 include ("variables.php");
 
 $url = parse_url($_SERVER["REQUEST_URI"])["path"];
-
-if (explode("/", $url)[0] != "api") {
+if (explode("/", $url)[2] != "api") {
     echo "<!DOCTYPE html>
 <html lang='fi'>
 <head>
