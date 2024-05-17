@@ -1,13 +1,12 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-$users = [
-    'pertti' => ['username' => 'pertti', 'bestScore' => 64.2]
-];
+
 if (isset($_GET['username'])) {
-    if (array_key_exists($_GET['username'], $users)) {
-        echo json_encode($users[$_GET['username']]);
-    }
-    else {
+
+    $userModel = new \Models\UserModel(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+    if ($userModel->userExists($_GET['username'])) {
+        echo json_encode([true]);
+    } else {
         echo json_encode([]);
     }
 }

@@ -5,12 +5,17 @@ import setEventListeners from "/taitaja/resources/events.js";
 
 var passwordInputs = document.getElementsByClassName("password-input");
 var usernameInput = document.getElementById("username");
-var passwordWrongP = document.getElementById("passwordsWrongP");
+var passwordInvalidP = document.getElementById("passwordsInvalidP");
+var usernameInvalidP = document.getElementById("usernameInvalidP");
 
 // Password validation rule
 var minPasswordLength = 8;
 
+// Username validation rule
+var minUsernameLength = 3;
+
 var passwordsAreValid = false;
+var usernameIsValid = false;
 
 setEventListeners(passwordInputs, {
   onchange: () => {
@@ -19,46 +24,47 @@ setEventListeners(passwordInputs, {
     let lengthValidation = checkLength(passwordInputs[0].value, 8);
 
     if (passwordsMatch && lengthValidation) {
-      setStyles(passwordInputs, { borderColor: "green" });
       passwordsAreValid = true;
+
+      setStyles(passwordInputs, { borderColor: "green" });
+      setStyles([passwordInvalidP], { display: "none" });
     } else {
-      setStyles(passwordInputs, { borderColor: "red" });
       passwordsAreValid = false;
-    }
-    // Next we check if every field has a value.
-    let everyFieldHasValue = true;
-    Object.values(passwordInputs).forEach((element) => {
-      if (element.value.length == 0) {
-        everyFieldHasValue = false;
-      }
-    });
-    // Displaying text to the user when passwords aren't valid.
-    if (!passwordsAreValid) {
+
+      setStyles(passwordInputs, { borderColor: "red" });
+
       if (!passwordsMatch) {
-        passwordWrongP.innerText = "Salasanat eivät täsmää!";
+        passwordInvalidP.innerText = "Salasanat eivät täsmää!";
       } else {
-        passwordWrongP.innerText =
+        passwordInvalidP.innerText =
           "Salasanan täytyy olla vähintään " +
           minPasswordLength +
           " merkkiä pitkä.";
       }
-      setStyles([passwordWrongP], { display: "block" });
-    } else {
-      setStyles([passwordWrongP], { display: "none" });
+
+      setStyles([passwordInvalidP], { display: "block" });
     }
   },
 });
 
 setEventListeners([usernameInput], {
   onchange: async () => {
-    // Validation booleans
-    var lengthValidation = false;
-    var usernameIsUnique = await usernameExists(usernameInput.value);
-    console.log(usernameIsUnique);
+    if (checkLength(usernameInput.value, 3)) {
+      usernameExists(usernameInput.value, (usernameExists) => {
+        if (!usernameExists) {
+          setStyles([usernameInput], { borderColor: "green" });
+          setStyles([usernameInvalidP], { display: "none" });
+        } else {
+          setStyles([usernameInput], { borderColor: "red" });
 
-    if (!usernameIsUnique && checkLength) {
-      var lengthValidation = true;
-      var usernameIsUnique = true;
+          usernameInvalidP.innerText = "Nimi on jo käytössä.";
+          setStyles([usernameInvalidP], { display: "block" });
+        }
+      });
+    } else {
+      usernameInvalidP.innerText =
+        "Nimen täytyy olla vähintään " + minUsernameLength + " merkkiä pitkä.";
+      setStyles([usernameInvalidP], { display: "block" });
     }
   },
 });

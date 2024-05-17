@@ -12,6 +12,8 @@ body {
   min-height: 100svh;
   max-height: 100svh;
   align-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #main-form {
@@ -34,11 +36,16 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+.input-wrapper > label {
+  /* font-size: 1.4rem; */
+
+  /* text-decoration: underline; */
+}
 .input-wrapper > input {
   margin-top: 0.3rem;
   width: 100%;
   padding: 10px;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   border: 1px solid black;
   border-radius: 0.5rem;
 }
@@ -63,6 +70,10 @@ body {
     color: transparent;
   }
 }
+.invalidP {
+  font-weight: bolder;
+  color: rgb(194, 5, 40);
+}
 .form-buttons {
   margin: 0 auto;
   width: 90%;
@@ -70,14 +81,20 @@ body {
   justify-content: end;
   align-items: center;
 }
-a {
-  color:rgb(194, 5, 40);
+.form-buttons > a {
+  color: rgb(194, 5, 40);
   text-decoration: none;
-} 
+  border-radius: 0.5rem;
+  padding: 10px;
+  &:hover {
+    background-color: rgb(231, 231, 231);
+  }
+}
 
 .form-buttons > * {
   /* float:right; */
   margin: 0 0 0 1rem;
+  font-size: 1rem;
 }
 .form-buttons > input[type="submit"] {
   border: none;
@@ -85,6 +102,9 @@ a {
   border-radius: 0.5rem;
   padding: 10px;
   color: white;
+  &:hover {
+    background-color: rgb(144, 5, 40);
+  }
 }
 .bottom-banner {
   background: url(/taitaja/resources/jigsaw_pieces.preview.jpg);

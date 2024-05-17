@@ -6,11 +6,12 @@ echo "<title>Tulokset</title>
 <body>
     
     <div class='wrapper'>
-        <form id='main-form' class='border full' action='/api/login' method='post'>
-            <div class='logo-container'>
+        <form id='main-form' class='border full' action='/taitaja/api/login' method='post'>
+            <!-- <div class='logo-container'>
                 <img src='/taitaja/resources/logo.png' class='logo' alt='logo with dark background'>
-            </div>
+            </div> -->
             <div id='login-inputs'>
+                <div class='input-wrapper'><h1>Kirjaudu</h1></div>
                 <div class='input-wrapper'>
                     <label for='username'>Käyttäjän nimi</label>
                     <input type='text' placeholder='Kirjoita käyttäjänimi' class='login-text-input' name='username' id='username'>
