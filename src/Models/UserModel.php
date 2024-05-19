@@ -58,9 +58,9 @@ class UserModel
                 throw new \Exception("username is already in use", $this::EXCEPTION_CODES["USERNAME_EXISTS"]);
             }
 
-            $stmt = $this->db->prepare("INSERT INTO users ('name','password') VALUES (?,?)");
+            $stmt = $this->db->prepare("INSERT INTO users (name,password) VALUES (?,?)");
 
-            $passhash = password_hash($password, PASSWORD_ARGON2I);
+            $passhash = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt->execute([$username, $passhash]);
 
@@ -106,7 +106,7 @@ class UserModel
     public function userExists($name)
     {
         try {
-            $stmt = $this->db->prepare("SELECT id from users WHERE name=?");
+            $stmt = $this->db->prepare("SELECT * from users WHERE name=?");
             $stmt->execute([$name]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;

@@ -3,7 +3,7 @@
 spl_autoload_register(function ($class) {
   // replace namespace separators with directory separators in the relative 
   // class name, append with .php
-  $class_path = str_replace('\\', '/', $class);
+  $class_path = str_replace("\\", "/", $class);
   
   $file =  __DIR__ . '/src/' . $class_path . '.php';
 

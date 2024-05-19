@@ -1,2 +1,3 @@
+php_value display_errors on
 RewriteRule ^images/video/(.*)/(.*).jpg /image
 FallbackResource /taitaja/index.php

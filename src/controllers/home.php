@@ -1,5 +1,4 @@
 <?php
-
 echo "
     <meta name='description' content='Täältä löytyy tulokset.'>
     <title>Tulokset</title>
