@@ -103,6 +103,23 @@ class UserModel
      * @param string $name Name of the user that is checked.
      * @return array
      */
+    public function save_score($score)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * from users WHERE name=?");
+            $stmt->execute([$name]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            throw new \Exception($e->getMessage(), $this::EXCEPTION_CODES['DATABASE_ERROR']); // If pdo throws exception then we will throw exception with our own code
+        }
+    }
+    /**
+     * userExist function checks if user exists
+     *
+     * @param string $name Name of the user that is checked.
+     * @return array
+     */
     public function userExists($name)
     {
         try {

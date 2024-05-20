@@ -17,13 +17,26 @@
   canvas {
     border: 1px solid white;
   }
+  #score {
+    position:absolute;
+    color:white;
+    top:calc();
+  }
   </style>
 </head>
 <body>
 <canvas width="400" height="400" id="game"></canvas>
+<p id="score">Score 0</p>
+<div id="infoPanel">
+  
+</div>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
+
+var score = document.getElementById('score');
+
+var gameAvtive = true;
 
 var grid = 16;
 var count = 0;
@@ -55,7 +68,9 @@ function getRandomInt(min, max) {
 
 // game loop
 function loop() {
-  requestAnimationFrame(loop);
+  if(gameAvtive) {
+    requestAnimationFrame(loop);
+  }
 
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
   if (++count < 4) {
@@ -108,6 +123,7 @@ function loop() {
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
 
+      score.textContent = "Score " + (snake.maxCells - 4);
       // canvas is 400x400 which is 25x25 grids 
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
@@ -124,6 +140,8 @@ function loop() {
         snake.maxCells = 4;
         snake.dx = grid;
         snake.dy = 0;
+
+        score.textContent = "Score 0";
 
         apple.x = getRandomInt(0, 25) * grid;
         apple.y = getRandomInt(0, 25) * grid;
