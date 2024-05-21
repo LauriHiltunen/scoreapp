@@ -20,6 +20,7 @@ const PATHS = [
     ROOT_URL . "register" => ROOT_DIR . "/src/controllers/register.php",
     ROOT_URL . "api/getUser" => ROOT_DIR . "/src/controllers/getUser.php",
     ROOT_URL . "api/register" => ROOT_DIR . "/src/controllers/regUser.php",
-    ROOT_URL . "api/login" => ROOT_DIR . "/src/controllers/logUser.php"
+    ROOT_URL . "api/login" => ROOT_DIR . "/src/controllers/logUser.php",
+    ROOT_URL . "profile" => ROOT_DIR . "/src/controllers/profile.php"
 ];
 
